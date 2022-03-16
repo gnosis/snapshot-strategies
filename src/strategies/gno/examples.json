@@ -1,0 +1,18 @@
+[
+  {
+    "name": "GNO Token Votes",
+    "strategy": {
+      "name": "gno",
+      "params": {
+        "address": "0xba100000625a3754423978a60c9317c58a424e3D",
+        "symbol": "GNO",
+        "decimals": 18
+      }
+    },
+    "network": "1",
+    "addresses": [
+      "0x0000000034bc2b18f774362282b3319e78ea4ede"
+    ],
+    "snapshot": 12424932
+  }
+]
