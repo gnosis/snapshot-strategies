@@ -548,7 +548,7 @@ const strategies = {
   'safety-module-bpt-power': safetyModuleBptPower,
   'minotaur-money': MinotaurMoney,
   'sd-boost': sdBoost,
-  'gno': gno
+  gno: gno
 };
 
 Object.keys(strategies).forEach(function (strategyName) {

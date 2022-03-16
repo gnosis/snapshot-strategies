@@ -1,9 +1,4 @@
-//import { getAddress } from '@ethersproject/address';
 import { subgraphRequest } from '../../utils';
-
-const GNOSIS_SUBGRAPH_URL = {
-  '100': 'https://api.thegraph.com/subgraphs/name/auryn-macmillan/gno-vote-weight'
-};
 
 export const author = 'nginnever';
 export const version = '0.1.0';
@@ -22,11 +17,10 @@ export async function strategy(
       voteWeight: true
     }
   };
-  const result = await subgraphRequest(GNOSIS_SUBGRAPH_URL[network], params);
+  const result = await subgraphRequest(options.SUBGRAPH_URL[network], params);
   const score = {};
   result.users.map((user) => {
-    score[user.id] = user.voteWeight;
-  })
-  console.log(score)
+    score[user.id] = Number(user.voteWeight);
+  });
   return score || {};
 }

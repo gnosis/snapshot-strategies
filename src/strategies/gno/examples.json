@@ -6,13 +6,14 @@
       "params": {
         "address": "0xba100000625a3754423978a60c9317c58a424e3D",
         "symbol": "GNO",
-        "decimals": 18
+        "decimals": 18,
+        "SUBGRAPH_URL": {
+          "100": "https://api.thegraph.com/subgraphs/name/auryn-macmillan/gno-vote-weight"
+        }
       }
     },
     "network": "100",
-    "addresses": [
-      "0x0000000034bc2b18f774362282b3319e78ea4ede"
-    ],
+    "addresses": ["0x0000000034bc2b18f774362282b3319e78ea4ede"],
     "snapshot": 12424932
   }
 ]

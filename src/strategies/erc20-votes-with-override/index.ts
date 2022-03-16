@@ -5,12 +5,18 @@ import { multicall } from '../../utils';
 export const author = 'serenae-fansubs';
 export const version = '0.1.0';
 
-const getVotesName = "getVotes";
-const getVotesABI = ["function getVotes(address account) view returns (uint256)"];
-const balanceOfName = "balanceOf";
-const balanceOfABI = ["function balanceOf(address account) view returns (uint256)"];
-const delegatesName = "delegates";
-const delegatesABI = ["function delegates(address account) view returns (address)"];
+const getVotesName = 'getVotes';
+const getVotesABI = [
+  'function getVotes(address account) view returns (uint256)'
+];
+const balanceOfName = 'balanceOf';
+const balanceOfABI = [
+  'function balanceOf(address account) view returns (uint256)'
+];
+const delegatesName = 'delegates';
+const delegatesABI = [
+  'function delegates(address account) view returns (address)'
+];
 
 /*
   Counts votes from delegates, and also from individual delegators who wish
@@ -41,7 +47,7 @@ export async function strategy(
 ) {
   const blockTag = typeof snapshot === 'number' ? snapshot : 'latest';
   const addressesLc = addresses.map((address: any) => lowerCase(address));
-  
+
   const getVotesResponse = await multicall(
     network,
     provider,
@@ -65,11 +71,13 @@ export async function strategy(
     ]),
     { blockTag }
   );
-  const delegators = Object.fromEntries(delegatesResponse
-    .map((value: any, i: number) => [
-      addressesLc[i],
-      lowerCase(getFirst(value))])
-    .filter(([, delegate]) => isValidAddress(delegate))
+  const delegators = Object.fromEntries(
+    delegatesResponse
+      .map((value: any, i: number) => [
+        addressesLc[i],
+        lowerCase(getFirst(value))
+      ])
+      .filter(([, delegate]) => isValidAddress(delegate))
   );
 
   /*
@@ -80,7 +88,10 @@ export async function strategy(
     addressesLc.map((address: string) => [
       address,
       Object.entries(delegators)
-        .filter(([delegator, delegate]) => address === delegate && delegator !== delegate)
+        .filter(
+          ([delegator, delegate]) =>
+            address === delegate && delegator !== delegate
+        )
         .map(([delegator]) => delegator)
     ])
   );
@@ -96,20 +107,34 @@ export async function strategy(
     ]),
     { blockTag }
   );
-  const balances = Object.fromEntries(balanceOfResponse.map((value: any, i: number) => [
-    addressesLc[i],
-    parseValue(value, options.decimals)
-  ]));
+  const balances = Object.fromEntries(
+    balanceOfResponse.map((value: any, i: number) => [
+      addressesLc[i],
+      parseValue(value, options.decimals)
+    ])
+  );
 
   return Object.fromEntries(
     getVotesResponse.map((value: any, i: number) => [
       addresses[i],
-      getVotesWithOverride(addressesLc[i], parseValue(value, options.decimals), delegators, delegates, balances)
+      getVotesWithOverride(
+        addressesLc[i],
+        parseValue(value, options.decimals),
+        delegators,
+        delegates,
+        balances
+      )
     ])
   );
 }
 
-function getVotesWithOverride(address: string, votes: number, delegators: Record<string, string>, delegates: Record<string, Array<string>>, balances: Record<string, number>): number {
+function getVotesWithOverride(
+  address: string,
+  votes: number,
+  delegators: Record<string, string>,
+  delegates: Record<string, Array<string>>,
+  balances: Record<string, number>
+): number {
   const adjustedVotes = { votes };
 
   if (votes > 0) {
@@ -153,5 +178,8 @@ function lowerCase(value: any): any {
 }
 
 function isValidAddress(address: string): boolean {
-  return isAddress(address) && address != "0x0000000000000000000000000000000000000000";
+  return (
+    isAddress(address) &&
+    address != '0x0000000000000000000000000000000000000000'
+  );
 }
