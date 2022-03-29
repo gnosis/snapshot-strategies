@@ -6,7 +6,7 @@ import {
 } from '../../utils';
 
 export const author = 'trizin';
-export const version = '0.1.0';
+export const version = '0.2.0';
 
 const abi = [
   'function isVerifiedUser(address _user) external view returns (bool)'
@@ -87,6 +87,20 @@ export async function strategy(
     }, {});
     // { address: '0x...55', score: 1.0 }
 
+<<<<<<< HEAD
+=======
+    // sum delegations
+    addresses.forEach((address) => {
+      if (!scores[address]) scores[address] = 0;
+      if (delegations[address]) {
+        delegations[address].forEach((delegator: string) => {
+          scores[address] += scores[delegator] ?? 0; // add delegator score
+          scores[delegator] = 0; // set delegator score to 0
+        });
+      }
+    });
+
+>>>>>>> 06135d630cec30d43eb4da151082631920da094b
     for (const key of Object.keys(scores)) {
       totalScores[key] = totalScores[key]
         ? totalScores[key] + scores[key]

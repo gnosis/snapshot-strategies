@@ -47,8 +47,11 @@ import * as synthetix from './synthetix';
 import * as aelinCouncil from './aelin-council';
 import * as synthetixQuadratic from './synthetix-quadratic';
 import * as synthetixQuadraticOne from './synthetix-quadratic_1';
+import * as synthetixQuadraticTwo from './synthetix-quadratic_2';
+import * as synthetixOne from './synthetix_1';
 import * as synthetixNonQuadratic from './synthetix-non-quadratic';
 import * as synthetixNonQuadraticOne from './synthetix-non-quadratic_1';
+import * as synthetixNonQuadraticTwo from './synthetix-non-quadratic_2';
 import * as ctoken from './ctoken';
 import * as cream from './cream';
 import * as esd from './esd';
@@ -142,6 +145,8 @@ import * as modefi from './modefi';
 import * as modefiStaking from './modefi-staking';
 import * as spookyswap from './spookyswap';
 import * as glide from './glide';
+import * as goldfinchVotingPower from './goldfinch-voting-power';
+import * as goldfinchMembership from './goldfinch-membership';
 import * as rnbwBalance from './rnbw-balance';
 import * as celerSgnDelegation from './celer-sgn-delegation';
 import * as balancerDelegation from './balancer-delegation';
@@ -151,6 +156,7 @@ import * as cake from './cake';
 import * as aks from './aks';
 import * as tomyumswap from './tomyumswap';
 import * as planetFinance from './planet-finance';
+import * as planetFinancev2 from './planet-finance-v2';
 import * as impossibleFinance from './impossible-finance';
 import * as immutableX from './immutable-x';
 import * as ogn from './ogn';
@@ -272,7 +278,16 @@ import * as ethercatsFoundersSeries from './ethercats-founders-series';
 import * as potion from './potion';
 import * as MinotaurMoney from './minotaur-money';
 import * as safetyModuleBptPower from './safety-module-bpt-power';
+import * as convFinance from './conv-finance';
 import * as sdBoost from './sd-boost';
+<<<<<<< HEAD
+=======
+import * as capitalDaoStaking from './capitaldao-staking';
+import * as erc20RebaseWrapper from './erc20-rebase-wrapper';
+import * as wanakafarmLandIngame from './wanakafarm-land-ingame';
+import * as meebitsDaoDelegation from './meebitsdao-delegation';
+import * as starcatchersTopWindow from './starcatchers-top-window';
+>>>>>>> 06135d630cec30d43eb4da151082631920da094b
 import * as gno from './gno';
 
 const strategies = {
@@ -343,8 +358,11 @@ const strategies = {
   'aelin-council': aelinCouncil,
   'synthetix-quadratic': synthetixQuadratic,
   'synthetix-quadratic_1': synthetixQuadraticOne,
+  'synthetix-quadratic_2': synthetixQuadraticTwo,
+  synthetix_1: synthetixOne,
   'synthetix-non-quadratic': synthetixNonQuadratic,
   'synthetix-non-quadratic_1': synthetixNonQuadraticOne,
+  'synthetix-non-quadratic_2': synthetixNonQuadraticTwo,
   ctoken,
   cream,
   'staked-uniswap': stakedUniswap,
@@ -420,6 +438,8 @@ const strategies = {
   'xrc20-balance-of': xrc20BalanceOf,
   spookyswap,
   glide,
+  'goldfinch-voting-power': goldfinchVotingPower,
+  'goldfinch-membership': goldfinchMembership,
   'rnbw-balance': rnbwBalance,
   'celer-sgn-delegation': celerSgnDelegation,
   'balancer-delegation': balancerDelegation,
@@ -429,6 +449,7 @@ const strategies = {
   aks,
   tomyumswap,
   'planet-finance': planetFinance,
+  'planet-finance-v2': planetFinancev2,
   ogn,
   'impossible-finance': impossibleFinance,
   'immutable-x': immutableX,
@@ -547,8 +568,19 @@ const strategies = {
   potion,
   'safety-module-bpt-power': safetyModuleBptPower,
   'minotaur-money': MinotaurMoney,
+  'conv-finance': convFinance,
   'sd-boost': sdBoost,
+<<<<<<< HEAD
   gno: gno
+=======
+  'capitaldao-staking': capitalDaoStaking,
+  'erc20-rebase-wrapper': erc20RebaseWrapper,
+  'wanakafarm-land-ingame': wanakafarmLandIngame,
+  'meebitsdao-delegation': meebitsDaoDelegation,
+  'starcatchers-top-window': starcatchersTopWindow,
+  gno: gno,
+  'gno-vote-weight': gno
+>>>>>>> 06135d630cec30d43eb4da151082631920da094b
 };
 
 Object.keys(strategies).forEach(function (strategyName) {
